@@ -19,27 +19,27 @@ Dự án gồm:
 
 ## 2. NỘI DUNG
 ### Phần 1. CƠ SỞ LÝ LUẬN
-* **	1.1. Tổng quan về mô hình hóa toán học
-       a) Khái niệm Mô hình
-       b) Khái niệm Mô hình toán học
-       c) Khái niệm Mô hình hóa toán học
-* **	1.2. Quy trình mô hình hóa trong dạy học Toán
-* **	1.3. Năng lực mô hình hóa toán học
+* 	1.1. Tổng quan về mô hình hóa toán học
+      * a) Khái niệm Mô hình
+      * b) Khái niệm Mô hình toán học
+      * c) Khái niệm Mô hình hóa toán học
+* 	1.2. Quy trình mô hình hóa trong dạy học Toán
+* 	1.3. Năng lực mô hình hóa toán học
    a) Khái niệm Năng lực và Năng lực toán học
    b) Cấu trúc Năng lực mô hình hóa toán học
-•	1.4. Phát triển năng lực mô hình hóa toán học cho học sinh qua dạy học Đại số
+*	1.4. Phát triển năng lực mô hình hóa toán học cho học sinh qua dạy học Đại số
 ### Phần 2. THỰC TRẠNG VẤN ĐỀ
-* **2.1. Bài toán mô hình hóa trong chương trình môn Toán THPT
-* **	2.2. Thực trạng phát triển năng lực mô hình hóa toán học ở trường THPT
-    a) Về phía học sinh
-    b) Về phía giáo viên
+* 2.1. Bài toán mô hình hóa trong chương trình môn Toán THPT
+* 2.2. Thực trạng phát triển năng lực mô hình hóa toán học ở trường THPT
+    * a) Về phía học sinh
+    * b) Về phía giáo viên
 ### Phần 3. BIỆN PHÁP VÀ BÀI TOÁN MINH HỌA
-* **3.1. Quy trình các bước thiết lập mô hình hóa bài toán bằng hàm số bậc hai
-* **	3.2. Hệ thống bài toán thực tiễn về hàm số bậc hai nhằm phát triển năng lực mô hình hóa cho học sinh
-    a) Bài toán đo đạc, thiết kế thực tế và kiến trúc 
-    b) Bài toán chuyển động trong Vật lý và Thể thao 
-    c) Bài toán tối ưu hóa trong Kinh tế và Đời sống 
-* **	3.3. Biện pháp hướng dẫn học sinh lập mô hình và Giáo án minh họa
+* 3.1. Quy trình các bước thiết lập mô hình hóa bài toán bằng hàm số bậc hai
+* 3.2. Hệ thống bài toán thực tiễn về hàm số bậc hai nhằm phát triển năng lực mô hình hóa cho học sinh
+   * a) Bài toán đo đạc, thiết kế thực tế và kiến trúc 
+   * b) Bài toán chuyển động trong Vật lý và Thể thao 
+   * c) Bài toán tối ưu hóa trong Kinh tế và Đời sống 
+* 3.3. Biện pháp hướng dẫn học sinh lập mô hình và Giáo án minh họa
 
 ## 3. Kế hoạch thực hiện
 ☐Tuần 1: .
