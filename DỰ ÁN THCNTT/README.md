@@ -39,10 +39,6 @@ Dự án gồm:
    * a) Bài toán đo đạc, thiết kế thực tế và kiến trúc 
    * b) Bài toán chuyển động trong Vật lý và Thể thao 
    * c) Bài toán tối ưu hóa trong Kinh tế và Đời sống 
-* 3.3. Biện pháp hướng dẫn học sinh lập mô hình và Giáo án minh họa
+  
 
-## 3. Kế hoạch thực hiện
-☐Tuần 1: .
 
-☐Tuần 2: .
-## 4. Tài liệu tham khảo
