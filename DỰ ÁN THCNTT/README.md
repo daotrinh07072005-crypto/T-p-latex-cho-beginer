@@ -1,7 +1,6 @@
 #### Tác giả: ĐÀO THỊ KIỀU TRINH 
 DỰ ÁN: ''Phát triển năng lực mô hình hóa toán học cho học sinh thông qua hệ thống bài toán thực tiễn về hàm số bậc hai''
 ## 1. Giới thiệu về dự án 
-*Đây là một dư án về toán học được thực hiện bởi Đào Thị Kiều Trinh*\
  ## 
 Từ những bài toán về quỹ đạo chuyển động, lợi nhuận kinh tế đến các công trình kiến trúc dạng vòm, hàm số bậc hai hiện diện trong rất nhiều tình huống thực tế. Nhưng làm thế nào để học sinh không chỉ biết một công thức mà còn có thể dùng Toán học để khám phá và giải quyết những vấn đề của cuộc sống?
 
