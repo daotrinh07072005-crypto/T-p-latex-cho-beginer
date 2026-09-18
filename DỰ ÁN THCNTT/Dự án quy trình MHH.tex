@@ -1,0 +1,870 @@
+\documentclass[14pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[top=2cm, bottom=2.5cm, left=2.5cm, right=2cm]{geometry} 
+\usepackage[vietnamese]{babel}
+\usepackage{setspace}
+\usepackage[table,xcdraw]{xcolor} % Thư viện màu sắc và bảng
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{amsmath} % Thư viện bắt buộc để chạy cấu trúc toán nâng cao
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{tcolorbox} % Khai báo thư viện tạo khung
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{tkz-tab}
+\usetikzlibrary{calc}
+\usepackage{tabularx}          % Tự động căn chỉnh độ rộng cột hợp lý
+\usepackage{array}             % Hỗ trợ căn giữa theo chiều dọc ô (m{})
+\usepackage{enumitem}          % Tùy chỉnh danh sách dấu gạch đầu dòng gọn đẹp% Cấu hình độ thụt đầu dòng (thường là 1cm đến 1.27cm tùy quy định)
+\usepackage[most]{tcolorbox} 
+
+% Cấu hình khung cho Đề bài
+\newtcolorbox{debaibox}{
+	colback=orange!5!white,   % Màu nền cam nhạt (sang trọng, dễ đọc)
+	colframe=orange!80!black, % Đường viền cam đậm làm điểm nhấn
+	arc=3mm,                  % Bo tròn nhẹ ở 4 góc
+	boxrule=1.2pt,            % Độ dày của khung viền
+	enhanced,                 % Bật tính năng nâng cao
+	drop soft shadow          % Đổ bóng mờ nhẹ giúp khung nổi bật hơn
+}
+\newtcolorbox{lythuyetbox}[1]{
+	colback=blue!5!white,
+	colframe=blue!75!black,
+	fonttitle=\bfseries,
+	title=#1,
+	arc=2mm,
+	boxrule=0.8pt,
+	left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+\date{}
+\setlength{\parindent}{1cm} 
+% Cấu hình khoảng cách giữa các đoạn văn cho thông thoáng
+\setlength{\parskip}{5pt}
+\onehalfspacing % Đặt lệnh này để giãn dòng 1.5 cho toàn bộ bài
+% Khai báo màu sắc
+\definecolor{primary}{RGB}{20, 75, 120}     % Xanh navy đậm
+\definecolor{secondary}{RGB}{180, 80, 50}   % Đỏ gạch
+\definecolor{accentbg}{RGB}{245, 248, 252}   % Nền nhạt cho khung tiêu đề
+\definecolor{headerbg}{RGB}{220, 235, 245}   % Xanh nhạt cho tiêu đề bảng
+\definecolor{rowbg}{RGB}{248, 250, 252}     % Nền dòng xen kẽ
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor=primary,
+	urlcolor=primary,
+}
+
+\setlist[itemize]{noitemsep, topsep=2pt, leftmargin=1.2em}
+
+\begin{document}
+	
+	% KHUNG TRANG TRÍ DÀNH RIÊNG CHO TIÊU ĐỀ, TÁC GIẢ VÀ NGÀY THÁNG
+	\begin{tcolorbox}[
+		colback=accentbg, 
+		colframe=primary, 
+		arc=4mm, 
+		boxrule=1.5pt, 
+		center, 
+		width=\textwidth
+		]
+		\begin{center}
+			\vspace{0.2cm}
+			{\LARGE \bfseries \color{primary} \textbf{DỰ ÁN}\\[0.3cm]
+				{\LARGE \bfseries \color{primary} QUY TRÌNH MÔ HÌNH HÓA CÁC BÀI TOÁN THỰC TIỄN ỨNG DỤNG HÀM SỐ BẬC HAI}\\[0.4cm]
+				{\Large \bfseries \color{secondary} Sinh viên: Đào Thị Kiều Trinh}\\[0.2cm]
+				{\Large \bfseries \color{secondary} Mã sinh viên: 23S1010047 }\\[0.2cm]
+				{\Large \bfseries \color{secondary} Lớp: Toán 4A}\\[0.2cm]
+				%{\small \itshape \color{darkgray} \today}
+				\vspace{0.1cm}
+			\end{center}
+		\end{tcolorbox}
+		\clearpage
+		\begin{document}
+			% --- LỜI CẢM ƠN ---
+			
+			% Cấu hình độ thụt đầu dòng (thường là 1cm đến 1.27cm tùy quy định)
+			\setlength{\parindent}{1cm} 
+			% Cấu hình khoảng cách giữa các đoạn văn cho thông thoáng
+			\setlength{\parskip}{5pt}
+			\onehalfspacing % Đặt lệnh này để giãn dòng 1.5 cho toàn bộ bài
+			\begin{center}
+				\textbf{\Large LỜI CẢM ƠN}
+			\end{center}
+			\large{
+				
+				Toán học vốn xuất phát từ thực tiễn và quay trở lại phục vụ đời sống, chứ không chỉ gói gọn trong những bài giảng hay trang sách lý thuyết. Trong chương trình toán 10 (Chương trình GDPT 2018), hàm số bậc hai cùng đồ thị Parabol là một trong những mạch kiến thức mang tính ứng dụng rõ nét nhất. Từ việc tính toán quỹ đạo bay của các vật thể, tối ưu hóa doanh thu -- chi phí trong kinh doanh, cho đến bài toán thiết kế cầu treo, cổng vòm kiến trúc,... tất cả đều mang dấu ấn của mô hình hàm số bậc hai.
+				
+				Dù sở hữu tiềm năng ứng dụng rất lớn, việc đưa các bài toán thực tế vào tquá trình dạy và học toán 10 vẫn còn gặp không ít khó khăn. Học sinh thường lúng túng khi đứng trước một tình huống đời sống thực tế: không biết phải bắt đầu từ đâu, phân tích dữ kiện ra sao để ``dịch'' câu chuyện đó thành ngôn ngữ toán học. Xuất phát từ thực trạng trên, tôi đã quyết định chọn và triển khai đề tài: "Quy trình mô hình hóa các bài toán thực tiễn ứng dụng hàm số bậc hai" nhằm xây dựng tiến trình hỗ trợ học sinh cách mô hình hóa để giải quyết các bài toán thực tế ứng dụng hàm số bậc hai.
+				
+				Để hoàn thành dự án này, tôi xin gửi lời cảm ơn sâu sắc tới Thầy Nguyễn Đăng Minh Phúc đã giúp đỡ, góp ý, hướng dẫn trong quá trình thực hiện để tôi có thể hoàn thiện dự án tốt nhất.
+				
+				Mặc dù đã nghiêm túc đầu tư nhiều thời gian và tâm huyết, song vì đây là dự án đầu tiên nên chắc chắn không thể tránh khỏi những giới hạn và thiếu sót. Tôi rất trân trọng và mong nhận được những góp ý, nhận xét quý báu từ Thầy cùng các bạn sinh viên để dự án ngày càng được tốt hơn.
+			}
+			\vspace{0.8cm}
+			\begin{flushright}
+				\begin{minipage}{6cm} % Tạo một hộp rộng 5cm nằm ở bên phải
+					\centering        % Căn giữa tất cả các dòng chữ bên trong hộp này
+					
+					\textit{Tôi xin chân thành cảm ơn!}\\[0.2cm]
+					Sinh viên thực hiện\\[0.9cm] 
+					\textbf{Đào Thị Kiều Trinh}
+					
+				\end{minipage}
+			\end{flushright}
+			
+			\clearpage
+			\begin{center}
+				\textbf{\Large MỤC LỤC}
+			\end{center}
+			\large{
+				
+				\noindent \textbf{I. MỞ ĐẦU}
+				\begin{itemize}
+					\item[] 1.1. Lý do chọn đề tài
+					\item[] 1.2. Mục đích dự án
+					\item[] 1.3. Phương pháp thực hiện
+				\end{itemize}
+				
+				\noindent \textbf{II. NỘI DUNG}\\
+				\noindent \textbf{1. CƠ SỞ LÝ THUYẾT}
+				\begin{itemize}
+					\item[] 1.1. Mô hình hóa Toán học
+					\item[] 1.2. Quy trình mô hình hóa 
+					\item[] 1.3. Lý thuyết về Hàm số bậc hai
+				\end{itemize}
+				\noindent \textbf{2. BÀI TẬP MINH HỌA VÀ LỜI GIẢI CHI TIẾT}
+				\begin{itemize}
+					\item[] {2.1. Quy trình 4 bước mô hình hóa bài toán thực tiễn bằng hàm số bậc hai}
+					\item[]{2.2 Các dạng bài toán thực tiễn minh họa}
+					\begin{itemize}
+						\item[] {2.2.1. Bài toán thiết kế thực tế và kiến trúc}
+						\item[] {2.2.2. Bài toán quỹ đạo chuyển động trong Vật lý}
+						\item[] {2.2.3. Bài toán tối ưu hóa }
+					\end{itemize}
+				\end{itemize}
+				\noindent \textbf{III. TÀI LIỆU THAM KHẢO}
+				
+			}
+			\clearpage
+			% --- PHẦN MỞ ĐẦU ---
+			\noindent \textbf{\large I. MỞ ĐẦU} \\
+			\noindent \textbf{1.1 Lý do chọn đề tài}\\[-0.75cm]
+			\large{
+				
+				Nền giáo dục Việt Nam đang trong giai đoạn đổi mới mạnh mẽ theo định hướng của Chương trình Giáo dục phổ thông 2018. Mục tiêu cốt lõi của môn Toán không còn dừng lại ở việc truyền thụ kiến thức lý thuyết thuần túy hay rèn luyện kỹ năng giải bài tập đơn thuần, mà chuyển sang chú trọng việc hướng dẫn học sinh biết cách vận dụng tri thức toán học vào giải quyết các tình huống thực tiễn đời sống. 
+				
+				Toán học vốn xuất phát từ thực tiễn và quay trở lại phục vụ đời sống. Trong chương trình Toán 10, hàm số bậc hai cùng đồ thị Parabol là một trong những mạch kiến thức mang tính ứng dụng thực tế rõ nét nhất. Trong Kiến trúc \& Thiết kế như: mô hình hóa hình dáng vòm cầu, cổng vòm, dây cáp của cầu treo. Trong Vật lý như mô tả quỹ đạo chuyển động ném xiên, chuyển động của vật thể hay dòng nước. Trong Kinh tế & Đời sống như giải quyết các bài toán tối ưu hóa như tìm lợi nhuận, doanh thu cao nhất hay tối ưu diện tích. 
+				
+				Tuy nhiên, trong quá trình học tập, học sinh thường gặp nhiều khó khăn và lúng túng khi đứng trước các bài toán mang bối cảnh thực tế: không biết bắt đầu từ đâu, phân tích dữ kiện ra sao để loại bỏ các thông tin nhiễu và "dịch" câu chuyện thực tế đó thành ngôn ngữ toán học. 
+				
+				Để giải quyết vấn đề này, việc xác định và chuẩn hóa một quy trình từng bước giúp chuyển đổi từ bài toán thực tế sang bài toán toán học là vô cùng cần thiết. Xuất phát từ thực trạng trên, tôi lựa chọn đề tài: “Quy trình mô hình hóa các bài toán thực tiễn ứng dụng hàm số bậc hai” làm nội dung cho dự án của mình.
+			}\\[0.25cm]
+			\noindent \textbf{1.2. Mục đích dự án}
+			\begin{itemize}
+				Dự án được triển khai nhằm đạt được các mục đích cụ thể sau:
+				\item[-] Tổng quan cơ sở lý thuyết: Hệ thống hóa các khái niệm về mô hình, mô hình hóa toán học và lý thuyết nền tảng về hàm số bậc hai.  
+				\item[-] Xây dựng quy trình mô hình hóa: Xây dựng quy trình 4 bước cụ thể gồm: Thu thập số liệu/Quan sát $\rightarrow$ Thiết lập mô hình toán học $\rightarrow$ Giải bài toán toán học $\rightarrow$ Đối chiếu kết quả với thực tiễn) để giải quyết bài toán thực tế bằng hàm số bậc hai.   
+				\item[-] Phân loại và hệ thống bài tập minh họa: Phân loại các dạng bài toán thực tiễn điển hình (Kiến trúc - Đo đạc, Vật lý - Quỹ đạo chuyển động, Kinh tế - Tối ưu hóa) và áp dụng quy trình 4 bước để cung cấp lời giải chi tiết cho từng bài toán.
+			\end{itemize}
+			%\noindent Đoạn văn này bắt đầu ngay sát lề trái vì có lệnh \noindent ở đầu.
+			%Đoạn văn này ở phía dưới và sẽ tự động thụt lề đầu dòng như bình thường.
+			\noindent \textbf{1.. Phương pháp thực hiện}\\[0.15cm]
+			\noindent \hspace*{0.25cm} 1. Nhóm phương pháp lý thuyết. \\
+			\hspace*{0.25cm} 2. Nhóm phương pháp nghiên cứu thực tiễn. \\[0.25cm]
+			% --- PHẦN NỘI DUNG ---
+			\noindent \textbf{\large II. NỘI DUNG} \\
+			\noindent \textbf{\large 1. CƠ SỞ LÍ THUYẾT}\\
+			\noindent \textbf{1.1. Mô hình hóa toán học}\\[-0.75cm]
+			\large{
+				
+				\noindent\textbf{* Mô hình} là vật thay thế mang đầy đủ các tính chất của một vật thực tế. Qua nghiên cứu mô hình, ta có thể nắm vững các thuộc tính của đối tượng cần nghiên cứu mà không cần phải tiếp xúc với vật thật. Theo Kai Velten (2009), mô hình tốt nhất là mô hình đơn giản nhất nhưng vẫn đáp ứng đầy đủ các mục tiêu cần khảo sát, nói một cách khác nó cũng có đủ sự phức tạp để chúng ta hiểu rõ cách hoạt động của hệ thống và giải quyết tình huống có vấn đề đã đặt ra.
+			}\\[0.25cm]
+			\noindent \textbf{* Mô hình hóa toán học}\\[-0.75cm]
+			\large{
+				
+				Hiện nay có rất nhiều định nghĩa mô tả khái niệm Mô hình hóa toán học được chia sẻ trong lĩnh vực giáo dục toán học, tùy thuộc vào quan điểm lý thuyết mà mỗi tác giả lựa chọn.
+				
+				Theo định nghĩa Mô hình hóa toán học của Singapore: “Mô hình hóa toán học: là quá trình thành lập và cải thiện một mô hình toán học để biểu diễn và giải quyết các vấn đề thế giới thực tiễn”. Thông qua Mô hình hóa toán học, học sinh học cách lựa chọn và áp dụng một loạt các kiểu dữ liệu, các phương pháp và công cụ toán học phù hợp trong việc giải quyết các vấn đề thế giới thực tiễn. Cơ hội để xử lí các dữ liệu thực tế và sử dụng các công cụ toán học để phân tích dữ liệu nên là một phần của việc học tập toán học ở tất cả các cấp.
+				
+				Theo tài liệu của Nguyễn Danh Nam về mô hình hoá toán học: “Để vận dụng kiến thức toán học vào việc giải quyết những tình huống của thực tế, người ta phải toán học hóa tình huống đó, tức là xây dựng một mô hình toán học thích hợp cho phép tìm câu trả lời cho tình huống. Quá trình này được gọi là mô hình hoá toán học.” Một vài cấu trúc toán học cơ bản có thể dùng để mô hình hoá là các đồ thị, phương trình (công thức) hoặc hệ phương trình hay bất phương trình, chỉ số, bảng số hay các thuật toán. Mô hình hóa toán học cho phép học sinh kết nối toán học nhà trường với thế giới thực, chỉ ra khả năng áp dụng các ý tưởng toán, đồng thời cung cấp một bức tranh rộng hơn, phong phú hơn về toán học, giúp việc học toán trở nên ý nghĩa hơn.
+				
+			}\\[0.25cm]
+			\noindent \textbf{\large 1.2. Quy trình mô hình hóa}\\
+			\vspace{-0.75cm}
+			\large{
+				
+				Phỏng theo Coulange (1997), tác giả Lê Thị Hoài Châu (2014) đã cụ thể hóa 4 bước của quá trình mô hình hóa như sau:
+			}\\
+			\begin{figure}[H]      
+				\centering            
+				\includegraphics[width=0.8\textwidth]{Picture1 sơ đồ mô hình hóa.jpg} % Đã sửa: Chỉ để 1 tên file chính xác tại đây
+				\caption{Sơ đồ quy trình mô hình hóa toán học} 
+			\end{figure}
+			\noindent \large{
+				\textbf{Bước 1:} Chuyển từ vấn đề thực tế ban đầu thành mô hình trung gian bằng cách chuyển ngữ, loại bỏ hoặc thêm vào một số dữ kiện để vấn đề cần giải quyết trở nên rõ ràng và khả thi hơn. Ở đây, có thể xuất hiện nhiều mô hình trung gian cùng lúc mà người học phải lựa chọn, hoặc lần lượt trải qua.\\
+				\textbf{Bước 2:} Chuyển mô hình trung gian ở bước 1 thành mô hình thuần tuý toán học. Trong đó, các đối tượng, mối quan hệ đều được diễn đạt bằng ngôn ngữ toán học. Ở đây, người học có thể phải đối diện trước nhiều mô hình toán học.\\
+				\textbf{Bước 3:} Trước câu hỏi toán học được đặt ra trong bước 2, người học phải huy động các kiến thức toán để đưa ra một câu trả lời, cũng mang bản chất toán học.\\
+				\textbf{Bước 4:} Câu trả lời mang màu sắc “toán học” ở bước 3 được biên dịch thành câu trả lời cho vấn đề thực tế ban đầu. Ở đây, có thể xuất hiện khả năng câu trả lời có được lại không phù hợp với bối cảnh thực tế ban đầu do lời giải toán học ở bước 3 có vấn đề, hoặc do mô hình toán học được xây dựng ở bước 2 chưa thoả đáng,  hoặc có thể do mô hình trung gian ở bước 1 chưa phản ánh đủ bối cảnh thực tế.
+			}
+			\clearpage
+			\noindent \textbf{\Large 1.3. Lý thuyết về Hàm số bậc hai}
+			\begin{lythuyetbox}{1. Định nghĩa}
+				Hàm số bậc hai là hàm số cho bởi công thức:
+				\[
+				y = ax^2 + bx + c \quad (a \neq 0)
+				\]
+				Trong đó $x$ là biến số, $a, b, c$ là các hằng số.
+				
+				\begin{itemize}[label=--]
+					\item \textbf{Tập xác định:} $D = \mathbb{R}$.
+					\item \textbf{Chú ý:}
+					\begin{itemize}[label=$\raquo$]
+						\item Khi $a = 0, b \neq 0$, hàm số trở thành hàm số bậc nhất $y = bx + c$.
+						\item Khi $a = b = 0$, hàm số trở thành hàm hằng $y = c$.
+					\end{itemize}
+				\end{itemize}
+			\end{lythuyetbox}
+			
+			\vspace{0.3cm}
+			
+			\begin{lythuyetbox}{2. Đồ thị hàm số: $y=ax^2+bx+c$}
+				Đồ thị hàm số $y=ax^2+bx+c\ (a \neq 0)$ là một đường Parabol có:
+				
+				\begin{itemize}
+					\item[»] Đỉnh là $I\left(-\dfrac{b}{2a}; -\dfrac{\Delta}{4a}\right)$.
+					\item[»] Có trục đối xứng: đường thẳng $x = -\dfrac{b}{2a}$.
+					\item[»] $a > 0$: Bề lõm hướng lên trên.
+					\item[»] $a < 0$: Bề lõm hướng xuống dưới.
+				\end{itemize}
+				
+				\centering
+				\begin{tikzpicture}[scale=0.8, >=stealth]
+					
+					% ================= HÌNH 1: a > 0 =================
+					\begin{scope}[xshift=0cm]
+						% 1. Vẽ các đường gióng và trục đối xứng trước để nằm dưới đồ thị
+						\draw[dashed, thick] (2.2,-2.2) -- (2.2,2.8); % Trục đối xứng
+						\draw[dashed, thick] (0,-2) -- (2.2,-2);     % Đường gióng đỉnh sang Oy
+						
+						% 2. Hệ trục tọa độ Oxy
+						\draw[thick, ->] (-1.2,0) -- (4.5,0) node[below] {$x$};
+						\draw[thick, ->] (0,-2.8) -- (0,3.2) node[left] {$y$};
+						\node[above left] at (0,0) {$O$};
+						
+						% 3. Vẽ đường Parabol: y = 0.65*(x-2.2)^2 - 2
+						\draw[very thick, samples=100, domain=-0.5:4.4] plot (\x, {0.65*(\x-2.2)^2 - 2});
+						\node[above] at (3.5, 2.2) {$y = ax^2 + bx + c$};
+						
+						% 4. Các chấm tròn màu xanh tại các điểm đặc biệt
+						\fill[blue!80!black] (2.2,-2) circle (2.5pt) node[right=3pt] {$I$}; % Đỉnh I
+						\fill[blue!80!black] (2.2,0) circle (2.5pt);                         % Giao trục đối xứng và Ox
+						\fill[blue!80!black] (0,-2) circle (2.5pt);                          % Giao đường gióng và Oy
+						\fill[blue!80!black] (0,1.146) circle (2.5pt);                       % Giao parabol và Oy
+						
+						% 5. Điền các nhãn tọa độ toán học
+						\node[above left] at (2.2, 0) {$-\dfrac{b}{2a}$};
+						\node[left] at (-0.1, -2) {$-\dfrac{\Delta}{4a}$};
+					\end{scope}
+					
+					
+					% ================= HÌNH 2: a < 0 =================
+					% ĐÃ TĂNG xshift TỪ 7.5cm LÊN 8.8cm ĐỂ HAI ĐỒ THỊ CÁCH XA NHAU THOÁNG HƠN
+					\begin{scope}[xshift=8.8cm]
+						% 1. Vẽ các đường gióng và trục đối xứng trước
+						\draw[dashed, thick] (-1.8,-2.2) -- (-1.8,2.5); % Trục đối xứng
+						\draw[dashed, thick] (-1.8,1.8) -- (0,1.8);     % Đường gióng đỉnh sang Oy
+						
+						% 2. Hệ trục tọa độ Oxy
+						\draw[thick, ->] (-4,0) -- (1.8,0) node[below] {$x$};
+						\draw[thick, ->] (0,-2.8) -- (0,3.2) node[left] {$y$};
+						\node[below left] at (0,0) {$O$};
+						
+						% 3. Vẽ đường Parabol: y = -0.7*(x+1.8)^2 + 1.8
+						\draw[very thick, samples=100, domain=-3.8:0.4] plot (\x, {-0.7*(\x+1.8)^2 + 1.8});
+						\node[right] at (0.2, -1) {$y = ax^2 + bx + c$};
+						
+						% 4. Các chấm tròn màu xanh tại các điểm đặc biệt
+						\fill[blue!80!black] (-1.8,1.8) circle (2.5pt) node[above left=1pt] {$I$}; % Đỉnh I
+						\fill[blue!80!black] (-1.8,0) circle (2.5pt);                             % Giao trục đối xứng và Ox
+						\fill[blue!80!black] (0,1.8) circle (2.5pt);                              % Giao đường gióng và Oy
+						\fill[blue!80!black] (0,-0.468) circle (2.5pt);                           % Giao parabol và Oy
+						
+						% 5. Điền các nhãn tọa độ toán học
+						\node[below left] at (-1.8, 0) {$-\dfrac{b}{2a}$};
+						\node[right] at (0.1, 1.8) {$-\dfrac{\Delta}{4a}$};
+					\end{scope}
+					
+				\end{tikzpicture}
+			\end{lythuyetbox}
+			
+			\vspace{0.3cm}
+			
+			% ------------------ KHỐI CÁCH VẼ ------------------
+			\begin{lythuyetbox}{Cách vẽ:}
+				\begin{enumerate}
+					\item[\bf 1.] Xác định toạ độ đỉnh $I\left(-\dfrac{b}{2a}; -\dfrac{\Delta}{4a}\right)$;
+					\item[\bf 2.] Vẽ trục đối xứng $x = -\dfrac{b}{2a}$;
+					\item[\bf 3.] Xác định toạ độ các giao điểm của parabol với trục tung, trục hoành (nếu có);
+					\item[\bf 4.] Vẽ parabol.
+				\end{enumerate}
+			\end{lythuyetbox}
+			\vspace{0.3cm}
+			\begin{lythuyetbox}{3. Chiều biến thiên của hàm số bậc hai}
+				Dựa vào đồ thị của hàm số $y = ax^2 + bx + c\ (a \neq 0)$, ta có bảng biến thiên của nó trong hai trường hợp $a > 0$ và $a < 0$ như sau:
+				
+				\vspace{0.4cm}
+				
+				\noindent $\bullet$ \textbf{Với $a > 0$}
+				\begin{center}
+					\begin{tikzpicture}
+						% lgt là độ rộng cột chứa x,y (1.0). espcl là khoảng cách chiều ngang giữa các cột số (2.8)
+						\tkzTabInit[lgt=1.0, espcl=2.8, deltacl=0.5]%
+						{$x$ / 0.7, $y$ / 1.6}% Chiều cao dòng x là 0.7, dòng y là 1.6
+						{$-\infty$, $-\dfrac{b}{2a}$, $+\infty$}% Các giá trị dòng x
+						\tkzTabVar{+/ $+\infty$, -/ $-\dfrac{\Delta}{4a}$, +/ $+\infty$}% Hướng mũi tên dòng y
+					\end{tikzpicture}
+				\end{center}
+				
+				\vspace{0.6cm}
+				
+				\noindent $\bullet$ \textbf{Với $a < 0$}
+				\begin{center}
+					\begin{tikzpicture}
+						\tkzTabInit[lgt=1.0, espcl=2.8, deltacl=0.5]%
+						{$x$ / 0.7, $y$ / 1.6}%
+						{$-\infty$, $-\dfrac{b}{2a}$, $+\infty$}%
+						\tkzTabVar{-/ $-\infty$, +/ $-\dfrac{\Delta}{4a}$, -/ $-\infty$}%
+					\end{tikzpicture}
+				\end{center}
+				
+				\vspace{0.4cm}
+				Từ đó ta có định lí sau:
+				
+				\vspace{0.2cm}
+				\noindent \textbf{Định lí 1.} \textit{Nếu $a > 0$ thì hàm số $y = ax^2 + bx + c$ nghịch biến trên khoảng $\left(-\infty; -\dfrac{b}{2a}\right)$, đồng biến trên khoảng $\left(-\dfrac{b}{2a}; +\infty\right)$.}
+				
+				\vspace{0.2cm}
+				\noindent \textit{Nếu $a < 0$ thì hàm số $y = ax^2 + bx + c$ đồng biến trên khoảng $\left(-\infty; -\dfrac{b}{2a}\right)$, nghịch biến trên khoảng $\left(-\dfrac{b}{2a}; +\infty\right)$.}
+			\end{lythuyetbox}
+			\begin{lythuyetbox}{4. Cách xác định hàm số bậc hai}
+				Để xác định hàm số bậc hai $y = f(x) = ax^2 + bx + c$ (xác định các tham số $a, b, c$). 
+				Dựa vào giả thiết để lập nên các phương trình (hệ phương trình) ẩn là $a, b, c$.
+				
+				Việc lập nên các phương trình nêu ở trên thường sử dụng đến các kết quả sau:
+				\begin{itemize}
+					\item[»] Đồ thị hàm số đi qua điểm $M(x_0; y_0) \Leftrightarrow y_0 = f(x_0)$.
+					\item[»] Đồ thị hàm số có trục đối xứng $x = x_0 \Leftrightarrow -\dfrac{b}{2a} = x_0$.
+					\item[»] Đồ thị hàm số có đỉnh là $I(x_I; y_I) \Leftrightarrow \begin{cases} -\dfrac{b}{2a} = x_I \\ -\dfrac{\Delta}{4a} = y_I \end{cases}$.
+					\item[»] Trên $\mathbb{R}$, ta có:
+					\begin{enumerate}
+						\item $f(x)$ có giá trị lớn nhất $\Leftrightarrow a < 0$. Lúc này giá trị lớn nhất $f(x)$ là $-\dfrac{\Delta}{4a} = f\left(-\dfrac{b}{2a}\right)$.
+						\item $f(x)$ có giá trị nhỏ nhất $\Leftrightarrow a > 0$. Lúc này giá trị nhỏ nhất $f(x)$ là $-\dfrac{\Delta}{4a} = f\left(-\dfrac{b}{2a}\right)$.
+					\end{enumerate}
+				\end{itemize}
+			\end{lythuyetbox}
+			\clearpage
+			\noindent {{\color{blue}\textbf{\large 2. BÀI TẬP MINH HỌA VÀ LỜI GIẢI CHI TIẾT}}}\\
+			\noindent {{\color{blue}\textbf{\large 2.1 Quy trình 4 bước mô hình hóa bài toán thực tiễn bằng hàm số bậc hai}}} \\
+			\noindent \textbf{Bước 1:} \textit{\textbf{"Quan sát và thu thập số liệu"}} của các tình huống thực tiễn liên quan trực tiếp đến việc tìm giải pháp cho vấn đề. Hai nhiệm vụ quan trọng nhất trong bước 1 là quan sát và thu thập số liệu. Ở bước này, cần phát hiện được các yếu tố có liên quan trong tình huống thực tiễn, yếu tố nào đã xác định, yếu tố nào cần tìm và mối quan hệ giữa các yếu tố.\\[0.15cm]
+			\noindent \textbf{Bước 2:} Từ các yếu tố của tình huống thực tiễn, xem xét mối quan hệ để biểu diễn tình huống thành một bài toán có liên quan hàm số bậc hai. Sắp xếp các mối quan hệ và kết nối chúng tạo thành một sơ đồ logic và \textit{\textbf{"phát biểu bài toán bằng ngôn ngữ toán học".}}\\[0.15cm]
+			\noindent \textbf{Bước 3:} Dùng công cụ toán học – Hàm số bậc hai để \textit{\textbf{"giải bài toán"}} đã được thiết lập.}\\[0.15cm]
+		\noindent \textbf{Bước 4:} \textit{\textbf{"Đối chiếu kết quả của lời giải với mô hình thực tiễn và kết luận"}}. Đánh giá lời giải và đối chiếu với mô hình thực tiễn của bài toán. Từ đó, đưa ra kết luận về mô hình hóa toán học cho bài toán thực tiễn ban đầu.\\[0.25cm]
+		\noindent {{\color{blue}\textbf{\large 2.2. Các dạng bài toán thực tiễn minh họa}}}\\
+		\noindent {{\color{blue}\textbf{\large 2.2.1. Bài toán thiết kế thực tế và kiến trúc }}}
+		\begin{debaibox}
+			\noindent\textbf{\textcolor{red!80!black}{Câu 1:}} Cầu Nhật Tân bắc qua sông Hồng được xem là chiếc cầu dây võng dài nhất Việt Nam. Cầu có 5 trụ tháp chính kết nối các nhịp dây văng nâng đỡ toàn bộ phần chính của cây cầu, cũng là đề tượng trưng cho 5 cửa ô cổ kính của Hà Nội. Mỗi trụ tháp được kiến trúc tạo dáng mỹ thuật phía trong bằng đường cong tựa như một parabol. Giả sử biết độ rộng của mặt đường khoảng $43\text{ mét}$. Một người đã dùng dây dọi (không giãn) gắn lên thành trụ cầu ở vị trí $B$ và điều chỉnh độ dài dây dọi để quả nặng vừa chạm đất (khi lặng gió), sau đó đo được chiều dài đoạn dây dọi sử dụng là $1{,}87\text{ mét}$ và khoảng cách từ chân trụ cầu đến quả nặng là $20\text{ cm}$. Nếu dùng dữ liệu tự thu thập được và tính toán theo cách ở trên thì người này sẽ ước tính được độ cao từ đỉnh vòm phía trong một trụ của cầu Nhật Tân tới mặt đường là bao nhiêu?
+		\end{debaibox}
+		\begin{figure}[H]      
+			\centering            
+			\includegraphics[width=0.5\textwidth]{Hình 2.jpg} % Đã sửa: Chỉ để 1 tên file chính xác tại đây
+		\end{figure}
+		\centerline{{\color{blue}\textbf{\large Lời giải}}}\\
+		\noindent Để giải quyết vấn đề thực tiễn này bằng toán học, ta dùng đồ thị hàm số bậc hai để mô phỏng cho đường biên mặt trong của trụ cầu. Từ công thức của hàm số tìm được ứng với đồ thị, ta tính độ cao cần tìm.
+		
+		\noindent\textbf{Bước 1: Quan sát và thu thập số liệu}
+		\begin{itemize}
+			\item Đã biết độ rộng mặt đường giữa hai chân trụ cầu là $43\text{ m}$.
+			\item Vị trí điểm $B$ trên thành trụ cầu có khoảng cách từ chân đường dọi $B'$ đến chân trụ cầu $O$ là $20\text{ cm} = 0{,}2\text{ m}$.
+			\item Chiều dài dây dọi $BB' = 1{,}87\text{ m}$.
+			\item Cần tìm: Chiều cao $h$ từ đỉnh vòm $S$ đến mặt đường (khoảng cách $SH$).
+			\item Mô hình hóa: Sử dụng đồ thị hàm số bậc hai $y = ax^2 + bx + c$ để mô phỏng đường biên mặt trong của trụ cầu.
+		\end{itemize}
+		\begin{figure}[H]      
+			\centering            
+			\includegraphics[width=0.3\textwidth]{Hình 2'.jpg} % Đã sửa: Chỉ để 1 tên file chính xác tại đây
+		\end{figure}
+		\noindent\textbf{Bước 2: Biểu diễn tình huống bằng ngôn ngữ toán học }\\
+		Trước hết ta tìm công thức hàm số bằng cách:
+		\begin{itemize}
+			\item Đo khoảng cách $OA$ giữa hai chân trụ của cầu, từ đó xác định tọa độ điểm $A, H$ (với $H$ là trung điểm của $OA$).
+			\item Chọn một điểm $B$ cụ thể trên thành trụ cầu, xác định hình chiếu $B'$ trên mặt đường rồi đo $BB'$ và $OB'$. Từ đây, xác định tọa độ điểm $B$.
+		\end{itemize}
+		\begin{figure}[H]      
+			\centering            
+			\includegraphics[width=0.4\textwidth]{Picture2''.jpg} % Đã sửa: Chỉ để 1 tên file chính xác tại đây
+		\end{figure}
+		\noindent{Chọn hệ trục tọa độ $Oxy$ sao cho:}
+		\begin{itemize}
+			\item Gốc tọa độ $O(0; 0)$ trùng với một chân trụ cầu.
+			\item Trục hoành $Ox$ nằm trên mặt đường. Chân trụ đối diện nằm tại điểm $A(43; 0)$.
+			\item Điểm $B$ có tọa độ là $B(0{,}2; 1{,}87)$.
+			\item Đỉnh vòm $S$ có hoành độ là trung điểm của $OA$, tức $x_S = x_H = \dfrac{43}{2} = 21{,}5$.
+		\end{itemize}
+		Bài toán trở thành: Tìm tung độ $y_S$ của đỉnh $S$ thuộc parabol $y = ax^2 + bx + c$ đi qua gốc tọa độ $O(0;0)$, điểm $A(43;0)$ và điểm $B(0{,}2; 1{,}87)$.
+		
+		\noindent\textbf{Bước 3: Giải bài toán}
+		\begin{itemize}
+			\item Do đồ thị hàm số $y = ax^2 + bx + c$ đi qua gốc tọa độ $O(0;0)$ nên $c = 0$. Công thức hàm số có dạng:
+			\[ y = ax^2 + bx \]
+			
+			\item Đồ thị hàm số đi qua hai điểm $A(43; 0)$ và $B(0{,}2; 1{,}87)$ nên ta có hệ phương trình:
+			\[
+			\begin{cases}
+				a \cdot (0{,}2)^2 + b \cdot 0{,}2 = 1{,}87 \\
+				a \cdot 43^2 + b \cdot 43 = 0
+			\end{cases}
+			\iff
+			\begin{cases}
+				0{,}04a + 0{,}2b = 1{,}87 \\
+				1849a + 43b = 0
+			\end{cases}
+			\]
+			
+			\item Giải hệ phương trình trên, ta thu được:
+			\[
+			a = -\dfrac{187}{856}, \quad b = \dfrac{8041}{856}
+			\]
+			Do đó, hàm số bậc hai mô phỏng trụ cầu là:
+			\[
+			y = -\dfrac{187}{856}x^2 + \dfrac{8041}{856}x
+			\]
+			
+			\item Hình chiếu của đỉnh $S$ trên trục hoành là $H\left(\dfrac{43}{2}; 0\right)$, do đó tung độ đỉnh $S$ là:
+			\[
+			y_S = f(x_S) = f(x_H) = f\left(\dfrac{43}{2}\right) = -\dfrac{187}{856} \cdot \left(\dfrac{43}{2}\right)^2 + \dfrac{8041}{856} \cdot \left(\dfrac{43}{2}\right) \approx 100{,}98\text{ (m)}
+			\]
+		\end{itemize}
+		
+		\noindent\textbf{Bước 4: Đối chiếu kết quả với mô hình thực tiễn và kết luận}
+		\begin{itemize}
+			\item Làm tròn kết quả tung độ đỉnh $S$ đến hàng đơn vị: $y_S \approx 101\text{ m}$.
+			\item \textbf{Kết luận:} Độ cao từ đỉnh vòm phía trong một trụ của cầu Nhật Tân tới mặt đường ước tính khoảng $101\text{ mét}$.
+			\item\textit{(Lưu ý: Kết quả này là giả định theo số liệu do người này tự thu thập, không ảnh hưởng đến độ cao thật trong thực tế).}
+		\end{itemize}
+		
+		\begin{debaibox}
+			\noindent\textbf{\textcolor{red!80!black}{Câu 2:}} Một cây cầu treo có trọng lượng phân bố đều dọc theo chiều dài của nó. Cây cầu có trụ tháp đôi cao $75\text{ mét}$ so với mặt của cây cầu và cách nhau $400\text{ mét}$. Các dây cáp có hình dạng đường parabol và được treo trên các đỉnh tháp. Các dây cáp chạm mặt cầu ở tâm của cây cầu. Tìm chiều cao của dây cáp tại điểm cách tâm của cây cầu $100\text{ m}$ (giả sử mặt của cây cầu là bằng phẳng) (kết quả làm tròn đến hàng đơn vị).
+		\end{debaibox}
+		\centerline{{\color{blue}\textbf{\large Lời giải}}}\\
+		\noindent\textbf{Bước 1: Quan sát và thu thập số liệu}
+		\begin{itemize}
+			\item Chiều cao của hai trụ tháp so với mặt cầu: $75\text{ m}$.
+			\item Khoảng cách giữa hai trụ tháp: $400\text{ m}$.
+			\item Dây cáp chạm mặt cầu tại tâm cây cầu và có hình dạng đường parabol có bề lõm hướng lên trên.
+			\item Cần tìm: Chiều cao của dây cáp tại vị trí cách tâm cây cầu $100\text{ m}$.
+			\item Mô hình hóa: Sử dụng đồ thị hàm số bậc hai $y = ax^2 + bx + c$ ($a > 0$) để biểu diễn hình dạng dây cáp treo.
+		\end{itemize}
+		
+		\noindent\textbf{Bước 2: Biểu diễn tình huống bằng ngôn ngữ toán học }
+		\begin{itemize}
+			\begin{figure}[H]      
+				\centering            
+				\includegraphics[width=0.5\textwidth]{Hình 5.jpg}% Đã sửa: Chỉ để 1 tên file chính xác tại đây
+			\end{figure}
+			\item Chọn hệ trục tọa độ $Oxy$: Trục $Ox$ nằm dọc theo mặt cầu, trục $Oy$ vuông góc với $Ox$ tại tâm cây cầu.
+			\item Đỉnh của parabol trùng với gốc tọa độ $O(0;0)$, do đó giả sử công thức của parabol là:
+			\[
+			y = ax^2 \quad (a > 0)
+			\]
+			\item Khoảng cách giữa hai trụ tháp là $400\text{ m}$ nên hai đỉnh tháp cách trục tung một khoảng $\dfrac{400}{2} = 200\text{ m}$.
+			\item Do trụ tháp cao $75\text{ m}$, các đỉnh tháp tương ứng với hai điểm $A(-200; 75)$ và $B(200; 75)$ thuộc parabol.
+			\end{itemize">
+				Bài toán trở thành: Tìm giá trị $y$ tại $x = 100$ của parabol $y = ax^2$ đi qua điểm $B(200; 75)$.
+				
+				\noindent\textbf{Bước 3: Giải bài toán}
+				\begin{itemize}
+					\item Thay tọa độ điểm $B(200; 75)$ vào công thức $y = ax^2$, ta được:
+					\[
+					75 = a \cdot 200^2 \implies a = \dfrac{75}{40000} = \dfrac{3}{1600}
+					\]
+					\item Phương trình của parabol là:
+					\[
+					y = \dfrac{3}{1600}x^2
+					\]
+					\item Tại vị trí cách tâm cây cầu $100\text{ m}$ ($x = 100$), chiều cao của dây cáp là:
+					\[
+					y = \dfrac{3}{1600} \cdot 100^2 = \dfrac{300}{16} = 18{,}75 \approx 19\text{ (m)}
+					\]
+				\end{itemize}
+				
+				\noindent\textbf{Bước 4: Đối chiếu kết quả với mô hình thực tiễn và kết luận}
+				\begin{itemize}
+					\item Chiều cao $y \approx 19\text{ m}$ hoàn toàn phù hợp với thực tế ($0 < 19 < 75$).
+					\item \textbf{Kết luận:} Chiều cao của dây cáp tại điểm cách tâm của cây cầu $100\text{ m}$ là khoảng $19\text{ mét}$.
+				\end{itemize}
+				\vspace{0.15cm}
+				\noindent {{\color{blue}\textbf{\large 2.2.2. Bài toán quỹ đạo chuyển động trong Vật lý}}}
+				\begin{debaibox}
+					\noindent\textbf{\textcolor{red!80!black}{Câu 1:}} Khi một quả bóng được đá lên, nó sẽ đạt đến độ cao nào đó rồi rơi xuống. Biết rằng quỹ đạo của quả bóng là một cung parabol trong mặt phẳng với hệ tọa độ $Oxy$, trong đó $x$ là thời gian (tính bằng giây), kể từ khi quả bóng được đá lên; $y$ là độ cao (tính bằng mét) của quả bóng. Giả thiết rằng quả bóng được đá từ độ cao $0{,}5\text{m}$. Sau đó $1$ giây, quả bóng đạt độ cao $6{,}2\text{m}$ và $2$ giây sau khi đá lên, nó ở độ cao $4\text{m}$ (xem hình 2).
+				\end{debaibox}
+				\begin{figure}[H]      
+					\centering            
+					\includegraphics[width=0.5\textwidth]{Hình 1.jpg}\\ % Đã sửa: Chỉ để 1 tên file chính xác tại đây
+					\capture{Hình 2}
+				\end{figure}
+				\begin{debaibox}
+					\begin{enumerate}[label=\alph*)]
+						\item Hãy tìm hàm số bậc hai biểu thị độ cao $y$ theo thời gian $x$ và có phần đồ thị trùng với quỹ đạo của quả bóng trong tình huống trên.
+						\item Xác định độ cao lớn nhất của quả bóng (tính chính xác đến hàng phần nghìn).
+						\item Sau bao lâu thì quả bóng sẽ chạm đất kể từ khi đá lên (tính chính xác đến hàng phần trăm)?
+					\end{enumerate}
+				\end{debaibox}
+				\clearpage
+				\centerline{{\color{blue}\textbf{\large Lời giải}}}\\
+				\noindent \textbf{Bước 1: Quan sát và thu thập số liệu}
+				\begin{itemize}
+					\item \textbf{Các yếu tố đã xác định (Số liệu từ giả thiết):}
+					\begin{itemize}
+						\item Tại thời điểm bắt đầu đá ($x = 0$): Độ cao bóng đạt $0{,}5\text{ m}$.
+						\item Sau $1$ giây ($x = 1$): Độ cao bóng đạt $6{,}2\text{ m}$.
+						\item Sau $2$ giây ($x = 2$): Độ cao bóng đạt $4\text{ m}$.
+					\end{itemize}
+					\item \textbf{Các yếu tố cần tìm:}
+					\begin{itemize}
+						\item Hàm số bậc hai của quỹ đạo parabol $y$.
+						\item Độ cao lớn nhất (đỉnh của parabol).
+						\item Thời gian chạm đất (thời điểm độ cao $y = 0$).
+					\end{itemize}
+					\item \textbf{Mối quan hệ:} Quỹ đạo chuyển động là một cung parabol trong mặt phẳng tọa độ $Oxy$.
+				\end{itemize}
+				
+				\noindent \textbf{Bước 2: Biểu diễn tình huống huống bằng ngôn ngữ toán học}
+				\begin{itemize}
+					\item Giả sử hàm số bậc hai biểu thị quỹ đạo của quả bóng có dạng tổng quát:
+					\[y = ax^2 + bx + c \quad (a \neq 0)\]
+					\item Chuyển đổi dữ liệu thực tiễn ở Bước 1 thành điều kiện toán học bằng cách lập hệ phương trình đi qua $3$ điểm tọa độ $(0; 0{,}5)$, $(1; 6{,}2)$ và $(2; 4)$.
+				\end{itemize}
+				
+				\noindent \textbf{Bước 3: Giải bài toán}
+				\begin{itemize}
+					\item \textbf{Tìm hàm số bậc hai:}
+				\end{itemize}
+				Thay lần lượt các điểm $(0; 0{,}5)$, $(1; 6{,}2)$ và $(2; 4)$ vào hàm số, ta có hệ phương trình:
+				\[
+				\left\{
+				\begin{aligned}
+					&a(0)^2 + b(0) + c = 0{,}5 \\
+					&a(1)^2 + b(1) + c = 6{,}2 \\
+					&a(2)^2 + b(2) + c = 4\\
+				\end{aligned}
+				\right.
+				\implies
+				\left\{
+				\begin{aligned}
+					&c = 0{,}5 \\
+					&a + b = 5{,}7 \\
+					&4a + 2b = 3{,}5\\
+				\end{aligned}
+				\right.
+				\]
+				Giải hệ phương trình, ta được các hệ số:
+				\[
+				\left\{
+				\begin{aligned}
+					&a = -3{,}95 \\
+					&b = 9{,}65 \\
+					&c = 0{,}5
+				\end{aligned}
+				\right.
+				\]
+				
+				\textbf{Kết luận câu a:} Hàm số bậc hai cần tìm là $y = -3{,}95x^2 + 9{,}65x + 0{,}5$.
+				
+				\item \textbf{Xác định độ cao lớn nhất của quả bóng:}
+				
+				Độ cao lớn nhất chính là tung độ đỉnh của parabol:
+				\[y = \frac{-\Delta}{4a} = \frac{-\left(b^2 - 4ac\right)}{4a} = \frac{-\left(9{,}65^2 - 4 \cdot (-3{,}95) \cdot 0{,}5\right)}{4 \cdot (-3{,}95)} = 6{,}394\\
+				
+				\noindent\textbf{Kết luận câu b:} Độ cao lớn nhất của quả bóng đạt được là $6{,}394\text{ m}$.
+				\item \textbf{Tính thời gian bóng chạm đất:}
+			\end{itemize}
+			Khi quả bóng chạm đất, độ cao bằng $0$ ($y = 0$). Ta giải phương trình bậc hai:
+			\[-3{,}95x^2 + 9{,}65x + 0{,}5 = 0\]
+			Phương trình cho hai nghiệm:
+			\[x_1 \approx 2{,}49 \quad \text{hoặc} \quad x_2 \approx -0{,}05\]
+		\end{itemize}
+		
+		\noindent \textbf{Bước 4: Đối chiếu kết quả với mô hình thực tiễn và kết luận}
+		\begin{itemize}
+			\item \textbf{Đối chiếu điều kiện thực tế:} Vì thời gian kể từ khi đá bóng không thể âm ($x \ge 0$), ta loại nghiệm $x_2 \approx -0{,}05$ và nhận nghiệm $x_1 \approx 2{,}49$.
+			\item \textbf{Kết luận chung:}
+		\end{itemize}
+		\vspace{-0.35cm}
+		\begin{itemize}
+			\item[-] Hàm số quỹ đạo: $y = -3{,}95x^2 + 9{,}65x + 0{,}5$.
+			\item[-] Độ cao cực đại của bóng khi bay lên là $6{,}394\text{ m}$.
+			\item[-] Sau khoảng $2{,}49$\text{ giây} kể từ khi đá, quả bóng sẽ rơi xuống chạm đất.
+		\end{itemize}
+		
+		\begin{debaibox}
+			\noindent\textbf{\textcolor{red!80!black}{Câu 2:}} Một máy bay trực thăng cứu hộ bay ở độ cao $500\text{ (feet)}$ so với mặt đất, đang chuẩn bị phun nước vào một đám cháy rừng từ trên không. Độ cao $h\text{ (feet)}$ của nước so với mặt đất tính theo thời gian $t\text{ (s)}$ kể từ lúc máy bay phun ra là một hàm số bậc 2. Tại thời điểm $5\text{s}$ sau nước phun thì tới được phía trên đám cháy đang bốc lửa cao $90\text{m}$. Tính khoảng cách từ đám cháy đến máy bay theo phương ngang biết rằng khoảng cách theo phương ngang tính từ điểm cháy đến máy bay là $x = 85\text{ (ft)}$.
+		\end{debaibox}
+		\begin{figure}[H]      
+			\centering            
+			\includegraphics[width=0.3\textwidth]{Picture3.jpg}% Đã sửa: Chỉ để 1 tên file chính xác tại đây
+		\end{figure}
+		\centerline{{\color{blue}\textbf{\large Lời giải}}}\\
+		\noindent\textbf{Bước 1: Quan sát và thu thập số liệu}
+		\begin{itemize}
+			\item Độ cao ban đầu của nước tại thời điểm $t = 0\text{s}$ khi vừa phun ra từ máy bay là $h(0) = 500\text{ (ft)}$. Đây cũng là đỉnh của quỹ đạo Parabol.
+			\item Tại thời điểm $t = 5\text{s}$, độ cao của nước đạt $h(5) = 90\text{ (ft)}$ (tiếp cận đỉnh đám cháy).
+			\item Vận tốc theo phương ngang là hằng số: $x(t) = 85t\text{ (ft)}$.
+			\item Cần tìm: Khoảng cách từ đám cháy đến máy bay theo phương ngang, tức khoảng cách khi nước chạm đất ($h(t) = 0$).
+			\item Mô hình hóa: Sử dụng hàm số bậc hai $(P): h(t) = at^2 + bt + c$ để biểu diễn độ cao của nước theo thời gian $t$.
+		\end{itemize}
+		
+		\noindent\textbf{Bước 2: Biểu diễn tình huống bằng ngôn ngữ toán học}
+		\begin{itemize}
+			\begin{figure}[H]      
+				\centering            
+				\includegraphics[width=0.5\textwidth]{Hinh 3'.jpg} % Đã sửa: Chỉ để 1 tên file chính xác tại đây
+			\end{figure}
+			\item Chọn hệ trục tọa độ $Oth$ với gốc tọa độ $O$ nằm trên mặt đất, thẳng đứng phía dưới vị trí máy bay trực thăng.
+			\item Đồ thị hàm số bậc hai $(P): h(t) = at^2 + bt + c$ có đỉnh $I(0; 500)$ và đi qua điểm $A(5; 90)$.
+			\end{itemize">
+				Bài toán trở thành:
+				\begin{enumerate}
+					\item[1)] Tìm công thức của hàm số bậc hai $h(t) = at^2 + bt + c$.
+					\item[2)] Giải phương trình $h(t) = 0$ để tìm thời gian $t > 0$ khi nước chạm đất.
+					\item[3)] Tính khoảng cách theo phương ngang $x = 85t$.
+				\end{enumerate}
+				\noindent\textbf{Bước 3: Giải bài toán}
+				\begin{itemize}
+					\item Do $(P)$ có đỉnh $I(0; 500)$ và đi qua điểm $A(5; 90)$, ta có hệ phương trình:
+					\[
+					\begin{cases}
+						I(0; 500) \in (P) \\
+						-\dfrac{b}{2a} = 0 \\
+						A(5; 90) \in (P)
+					\end{cases}
+					\iff
+					\begin{cases}
+						c = 500 \\
+						-\dfrac{b}{2a} = 0 \\
+						25a + 5b + c = 90
+					\end{cases}
+					\iff
+					\begin{cases}
+						a = -\dfrac{82}{5} \\[6pt]
+						b = 0 \\[3pt]
+						c = 500
+					\end{cases}
+					\]
+					Suy ra công thức hàm số độ cao là: $h(t) = -\dfrac{82}{5}t^2 + 500$.
+					
+					\item Khi nước chạm đất thì $h(t) = 0$:
+					\[
+					-\dfrac{82}{5}t^2 + 500 = 0 \iff \left[
+					\begin{aligned}
+						t &= \dfrac{25\sqrt{82}}{41} \approx 5{,}52\text{ (s) \quad (thỏa mãn)} \\[4pt]
+						t &= -\dfrac{25\sqrt{82}}{41} \quad \text{(Loại)}
+					\end{aligned}
+					\right.
+					\]
+				\end{itemize}
+				\noindent\textbf{Bước 4: Đối chiếu kết quả với mô hình thực tiễn và kết luận}
+				\begin{itemize}
+					\item Khoảng cách theo phương ngang từ đám cháy đến máy bay khi nước chạm đất là:
+					\[
+					x = 85t = 85 \cdot \dfrac{25\sqrt{82}}{41} \approx 469\text{ (ft)}
+					\]
+					\item \textbf{Kết luận:} Khoảng cách theo phương ngang từ đám cháy đến máy bay xấp xỉ $469\text{ feet}$.
+				\end{itemize}
+				\begin{debaibox}
+					\noindent\textbf{\textcolor{red!80!black}{Câu 3:}} Một người đang chơi cầu lông có khuynh hướng phát cầu với góc $30^\circ$ (so với mặt đất). Hãy tính khoảng cách từ vị trí người này đến vị trí cầu rơi chạm đất (tầm bay xa), biết cầu rời mặt vợt ở độ cao $0{,}8\text{ mét}$ so với mặt đất và vận tốc xuất phát của cầu là $6\text{ (m/s)}$ (bỏ qua sức cản của gió và xem quỹ đạo của cầu luôn nằm trong mặt phẳng thẳng đứng).
+				\end{debaibox}
+				\centerline{{\color{blue}\textbf{\large Lời giải}}}\\
+				\noindent\textbf{Bước 1: Quan sát và thu thập số liệu}
+				\begin{itemize}
+					\item Gia tốc trọng trường: $g = 9{,}8\text{ m/s}^2$.
+					\item Góc phát cầu so với mặt đất: $\alpha = 30^\circ$.
+					\item Vận tốc ban đầu: $v_0 = 8\text{ m/s}$.
+					\item Độ cao ban đầu khi cầu rời vợt: $h_0 = 0{,}8\text{ m}$.
+					\item Mô hình hóa: Quỹ đạo của quả cầu lông là một đường Parabol trong mặt phẳng thẳng đứng $Oxy$.
+				\end{itemize}
+				
+				\noindent\textbf{Bước 2: Biểu diễn tình huống bằng ngôn ngữ toán học}
+				\begin{figure}[H]      
+					\centering            
+					\includegraphics[width=0.7\textwidth]{Hình 4.jpg} % Đã sửa: Chỉ để 1 tên file chính xác tại đây
+				\end{figure}
+				\begin{itemize}
+					\item Chọn hệ trục tọa độ $Oxy$ sao cho vị trí cầu rời mặt vợt nằm trên trục tung $Oy$ tại điểm $(0; 0{,}8)$ và mặt đất nằm trên trục hoành $Ox$.
+					\item Phương trình quỹ đạo chuyển động ném xiên của quả cầu có dạng:
+					\[
+					y = -\dfrac{g}{2v_0^2 \cos^2\alpha} x^2 + (\tan\alpha) x + h_0
+					\]
+					\item Thay $g = 9{,}8$, $\alpha = 30^\circ$, $v_0 = 8$ và $h_0 = 0{,}8$ vào phương trình:
+					\[
+					y = -\dfrac{4{,}9}{27} x^2 + \dfrac{\sqrt{3}}{3} x + 0{,}8
+					\]
+				\end{itemize}
+				Bài toán trở thành: Tìm hoành độ giao điểm dương $x > 0$ của parabol $y = -\dfrac{4{,}9}{27} x^2 + \dfrac{\sqrt{3}}{3} x + 0{,}8$ với trục hoành $Ox$ ($y = 0$).\\
+				\noindent\textbf{Bước 3: Giải bài toán}
+				\begin{itemize}
+					\item Giải phương trình hoành độ giao điểm $y = 0$:
+					\[
+					-\dfrac{4{,}9}{27} x^2 + \dfrac{\sqrt{3}}{3} x + 0{,}8 = 0
+					\]
+					\item Giải phương trình bậc hai trên, ta thu được hai nghiệm xấp xỉ:
+					\[
+					x_1 \approx 4{,}22, \quad x_2 \approx -1{,}04
+					\]
+				\end{itemize}
+				
+				\noindent\textbf{Bước 4: Đối chiếu kết quả với mô hình thực tiễn và kết luận}
+				\begin{itemize}
+					\item Vì khoảng cách $x$ phải nhận giá trị dương ($x > 0$), nên ta chọn nghiệm $x = x_1 \approx 4{,}22$.
+					\item \textbf{Kết luận:} Khoảng cách từ vị trí người chơi cầu lông đến vị trí cầu rơi chạm đất là khoảng $4{,}22\text{ m}$.
+				\end{itemize}
+				\clearpage
+				\noindent {{\color{blue}\textbf{\large 2.2.3. Bài toán tối ưu hóa}}}
+				\begin{debaibox}
+					\noindent\textbf{\textcolor{red!80!black}{Câu 1:}} Một cửa hàng buôn giày nhập một đôi với giá là $40$ đôla. Ước tính rằng nếu đôi giày được bán với giá $x$ đôla thì mỗi tháng khách hàng sẽ mua $(120 - x)$ đôi. Hỏi cửa hàng bán một đôi giày giá bao nhiêu thì thu được nhiều lãi nhất?
+				\end{debaibox}
+				\centerline{{\color{blue}\textbf{\large Lời giải}}}\\
+				\noindent\textbf{Bước 1: Quan sát và thu thập số liệu}
+				\begin{itemize}
+					\item Giá nhập vào của mỗi đôi giày: $40$ đôla.
+					\item Giá bán mỗi đôi giày: $x$ đôla (Điều kiện: $40 < x < 120$).
+					\item Số lượng giày bán được mỗi tháng: $120 - x$ đôi.
+					\item Lãi từ một đôi giày: $x - 40$ đôla.
+					\item Tổng tiền lãi thu được trong một tháng là:
+					\[
+					f(x) = (x - 40)(120 - x) = -x^2 + 160x - 4800 \quad \text{(đôla)}
+					\]
+					\item Mô hình hóa: Bài toán quy về việc tìm giá trị lớn nhất của hàm số bậc hai $y = f(x)$ trên khoảng $(40; 120)$.
+				\end{itemize}
+				
+				\noindent\textbf{Bước 2: Biểu diễn tình huống bằng ngôn ngữ toán học }
+				\begin{itemize}
+					\item Tìm giá trị của $x \in (40; 120)$ để hàm số $y = f(x) = -x^2 + 160x - 4800$ đạt giá trị lớn nhất.
+				\end{itemize}
+				
+				\noindent\textbf{Bước 3: Giải bài toán}
+				\begin{itemize}
+					\item Xét hàm số $f(x) = -x^2 + 160x - 4800$ trên khoảng $(40; 120)$.
+					\item Hoành độ đỉnh của parabol là: $x_0 = -\dfrac{b}{2a} = -\dfrac{160}{2(-1)} = 80 \in (40; 120)$.
+					\item Hệ số $a = -1 < 0$ nên bề lõm parabol quay xuống dưới, hàm số đạt giá trị lớn nhất tại đỉnh $x = 80$.
+					\item Giá trị lớn nhất tương ứng:
+					\[
+					f(80) = -(80)^2 + 160(80) - 4800 = 1600 \quad \text{(đôla)}
+					\]
+				\end{itemize}
+				
+				\noindent\textbf{Bước 4: Đối chiếu kết quả với mô hình thực tiễn và kết luận}
+				\begin{itemize}
+					\item Giá trị $x = 80$ nằm trong khoảng cho phép $(40 < 80 < 120)$ và cho mức lợi nhuận $1600$ USD/tháng, hoàn toàn hợp lý với thực tế kinh doanh.
+					\item \textbf{Kết luận:} Cửa hàng nên bán mỗi đôi giày với giá $80$ đôla thì sẽ thu được tiền lãi nhiều nhất (tiền lãi tương ứng đạt $1600$ đôla/tháng).
+				\end{itemize}
+				\begin{debaibox}
+					\noindent\textbf{\textcolor{red!80!black}{Câu 2:}} Mẹ có $60\text{ m}$ lưới muốn rào một mảng vườn hình chữ nhật để trồng rau, biết rằng một cạnh là tường, mẹ chỉ cần rào 3 cạnh còn lại của hình chữ nhật để làm vườn. Em hãy tính hộ diện tích lớn nhất mà mẹ có thể rào được?
+				\end{debaibox}
+				\centerline{{\color{blue}\textbf{\large Lời giải}}}\\
+				\noindent\textbf{Bước 1: Quan sát và thu thập số liệu }
+				\begin{itemize}[label=--]
+					\item Tổng chiều dài lưới dùng để rào 3 cạnh mảnh vườn: $60\text{ m}$.
+					\item Gọi độ dài hai cạnh vuông góc với tường là $x\text{ (m)}$ và cạnh song song với tường là $y\text{ (m)}$ (với $0 < x < 30$, $0 < y < 60$).
+					\item Mối quan hệ giữa chiều dài lưới và các cạnh: $2x + y = 60 \implies y = 60 - 2x$.
+					\item Diện tích mảnh vườn được tính theo công thức:
+					\[
+					S = f(x) = x \cdot y = x(60 - 2x) = -2x^2 + 60x \quad (\text{m}^2)
+					\]
+					\item Mô hình hóa: Bài toán quy về việc tìm giá trị lớn nhất của hàm số bậc hai $y = f(x)$ trên khoảng $(0; 30)$.
+				\end{itemize}
+				
+				\noindent\textbf{Bước 2: Biểu diễn tình huống bằng ngôn ngữ toán học}
+				\begin{itemize}[label=--]
+					\item Tìm giá trị của $x \in (0; 30)$ để hàm số $y = f(x) = -2x^2 + 60x$ đạt giá trị lớn nhất.
+				\end{itemize}
+				
+				\noindent\textbf{Bước 3: Giải bài toán}
+				\begin{itemize}[label=--]
+					\item Xét hàm số $f(x) = -2x^2 + 60x$ trên khoảng $(0; 30)$.
+					\item Hoành độ đỉnh của parabol là: $x_0 = -\dfrac{b}{2a} = -\dfrac{60}{2(-2)} = 15 \in (0; 30)$.
+					\item Bảng biến thiên:
+					\begin{center}
+						\begin{tabular}{c|ccccc}
+							$x$ & $0$ & & $15$ & & $30$ \\ \hline
+							$f(x)$ & $0$ & $\nearrow$ & $450$ & $\searrow$ & $0$
+						\end{tabular}
+					\end{center}
+					\item Dựa vào bảng biến thiên, hàm số đạt giá trị lớn nhất bằng $450$ tại $x = 15$.
+					\item Suy ra độ dài cạnh còn lại: $y = 60 - 2(15) = 30\text{ (m)}$.
+				\end{itemize}
+				
+				\noindent\textbf{Bước 4: Đối chiếu kết quả với mô hình thực tiễn và kết luận}
+				\begin{itemize}[label=--]
+					\item Giá trị $x = 15\text{ m}$ và $y = 30\text{ m}$ thỏa mãn các điều kiện thực tế ($x, y > 0$ và $2x + y = 60$).
+					\item \textbf{Kết luận:} Diện tích lớn nhất mà mẹ có thể rào được là $450\text{ m}^2$ (khi kích thước mảnh vườn là $15\text{ m} \times 30\text{ m}$).
+				\end{itemize}
+				\begin{debaibox}
+					\noindent\textbf{\textcolor{red!80!black}{Câu 3:}} Một công ty đào tạo quản lý cung cấp một khóa đào tạo quản lý với chi phí là $400$ đô một người, với chi phí này thì sẽ có $1000$ người tham gia khóa học. Công ty ước tính rằng, cứ mỗi lần giảm giá $5$ đô thì sẽ có thêm $20$ người tham gia khóa học. Hỏi công ty phải đưa ra giá cho khóa học bao nhiêu để thu được doanh thu lớn nhất? Doanh thu lớn nhất là bao nhiêu?
+				\end{debaibox}
+				
+				\centerline{{\color{blue}\textbf{\large Lời giải}}}\\
+				
+				\noindent\textbf{Bước 1: Quan sát và thu thập số liệu}
+				\begin{itemize}[label=--]
+					\item Gọi giá bán của khóa học sau khi giảm là $x$ (đô) (Điều kiện: $0 < x < 400$).
+					\item Số tiền giảm giá cho mỗi khóa học là: $400 - x$ (đô).
+					\item Cứ giảm $5$ đô thì số người tham gia tăng thêm $20$ người, nên số người tăng thêm là:
+					\[
+					\frac{400 - x}{5} \cdot 20 = 1600 - 4x \quad \text{(người)}
+					\]
+					\item Tổng số người tham gia khóa học là: $1000 + (1600 - 4x) = 2600 - 4x\ \text{(người)}$.
+					\item Tổng doanh thu thu được từ khóa học là:
+					\[
+					f(x) = x(2600 - 4x) = -4x^2 + 2600x \quad \text{(đô)}
+					\]
+					\item Mô hình hóa: Bài toán quy về việc tìm giá trị lớn nhất của hàm số bậc hai $y = f(x)$ trên khoảng $(0; 400)$.
+				\end{itemize}
+				
+				\noindent\textbf{Bước 2: Biểu diễn tình huống bằng ngôn ngữ toán học}
+				\begin{itemize}[label=--]
+					\item Tìm giá trị của $x \in (0; 400)$ để hàm số $y = f(x) = -4x^2 + 2600x$ đạt giá trị lớn nhất.
+				\end{itemize}
+				
+				\noindent\textbf{Bước 3: iải bài toán}
+				\begin{itemize}[label=--]
+					\item Xét hàm số $f(x) = -4x^2 + 2600x$ trên khoảng $(0; 400)$.
+					\item Hoành độ đỉnh của parabol là: $x_0 = -\dfrac{b}{2a} = -\dfrac{2600}{2(-4)} = 325 \in (0; 400)$.
+					\item Hệ số $a = -4 < 0$ nên bề lõm parabol quay xuống dưới, hàm số đạt giá trị lớn nhất tại đỉnh $x = 325$.
+					\item Bảng biến thiên:
+					\begin{center}
+						\begin{tabular}{c|ccccc}
+							$x$ & $0$ & & $325$ & & $400$ \\ \hline
+							$f(x)$ & $0$ & $\nearrow$ & $422500$ & $\searrow$ & $40000$
+						\end{tabular}
+					\end{center}
+					\item Giá trị lớn nhất tương ứng: $f(325) = -4(325)^2 + 2600(325) = 422500$ (đô).
+				\end{itemize}
+				
+				\noindent\textbf{Bước 4: Đối chiếu kết quả với mô hình thực tiễn và kết luận}
+				\begin{itemize}[label=--]
+					\item Giá trị $x = 325$ đô nằm trong khoảng cho phép ($0 < 325 < 400$) và mang lại doanh thu $422500$ đô, hoàn toàn phù hợp với thực tế kinh doanh.
+					\item \textbf{Kết luận:} Công ty nên bán khóa học với giá $325$ đô một người để thu được doanh thu lớn nhất (doanh thu lớn nhất đạt $422500$ đô).
+				\end{itemize}
+				
+				\noindent \textbf{\large III. TÀI LIỆU THAM KHẢO} 
+				\begin{enumerate}
+					\item Giáo dục và Đào tạo -- Sách giáo khoa Toán 10, 11 (\textit{Chương trình GDPT 2018 - Các bộ sách Kết nối tri thức, Cánh diều, Chân trời sáng tạo})
+					\item Nguyễn Danh Nam (2015) -- \textit{Quy trình mô hình hóa trong dạy học toán ở trường phổ thông}, Tạp chí Khoa học ĐHQG Hà Nội.
+					\item Nguyễn Danh Nam -- \textit{Phương pháp mô hình hóa trong dạy học môn Toán ở trường phổ thông}, NXB ĐH Thái Nguyên.
+					\item Nguyễn Dương Hoàng, Nguyễn Thị Thu Ba -- \textit{Vận dụng mô hình hóa toán học trong dạy học chủ đề hàm số bậc hai}, Tạp chí Giáo dục.
+					\item Nguyễn Hà Thanh -- \textit{Ứng dụng hàm số bậc hai vào giải quyết các bài toán thực tế ở trường THPT}, Sáng kiến kinh nghiệm, Sở GD\&ĐT Lâm Đồng.
+					\item Tác giả sáng kiến -- \textit{SKKN Phát triển năng lực mô hình hóa cho học sinh thông qua dạy học giải bài tập toán bằng phương pháp ứng dụng hàm số bậc hai}-- sangkienkinhnghiem.org.
+				\end{enumerate}
+			\end{document}
